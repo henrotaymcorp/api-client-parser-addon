@@ -52,5 +52,9 @@
     "typescript": "^5.0.4",
     "vite": "^4.3.2",
     "vite-plugin-eslint": "^1.8.1"
+  },
+  "dependencies": {
+    "@henrotaym/api-client": "^1.3.3",
+    "zod": "^3.21.4"
   }
 }
