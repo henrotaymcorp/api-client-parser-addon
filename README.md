@@ -8,9 +8,9 @@ yarn add @henrotaymcorp/api-client-parser-addon
 
 ## Usage
 ```typescript
-import { ResponseStatus, useResponseParser } from "./lib";
-import { z } from "zod";
 import { Client, Request } from "@henrotaym/api-client";
+import { ResponseStatus, useResponseParser } from "@henrotaymcorp/api-client-parser-addon";
+import { z } from "zod";
 
 // Defining response schema.
 const responseSchema = z.object({
