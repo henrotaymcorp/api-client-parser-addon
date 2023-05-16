@@ -7,7 +7,32 @@ yarn add @henrotaymcorp/api-client-parser-addon
 ```
 
 ## Usage
-<!-- @TODO -->
+```typescript
+import { ResponseStatus, useResponseParser } from "./lib";
+import { z } from "zod";
+import { Client, Request } from "@henrotaym/api-client";
+
+// Defining response schema.
+const responseSchema = z.object({
+  document: z.object({
+    name: z.string(),
+    uuid: z.string(),
+  }),
+});
+
+// Defining endpoint.
+const fetchDocument = async () =>
+  useResponseParser({
+    response: await new Client().try(new Request()),
+    schema: responseSchema,
+  });
+
+// Using endpoint response.
+const { data, status } = await fetchDocument();
+if (status === ResponseStatus.API_ERROR) return; // RequestRelatedException<{ document: { name: string; uuid: string; }; } }
+if (status === ResponseStatus.ZOD_ERROR) return; // ZodError<{ document: { name: string; uuid: string; } }
+new Model(data); // SUCCESS => { document: {  name: string; uuid: string; };
+```
 
 ## Development
 ```shell
